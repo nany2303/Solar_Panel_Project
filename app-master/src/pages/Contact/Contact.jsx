@@ -50,68 +50,68 @@ const Contact = () => {
 
                                     <li>
                                         <a href="/product">Products</a>
-                                        <ul className="sub-menu">
-                                            <li>
-                                                <a href="/home">Solar Panels</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-02.html">Mounting Structure</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Inverters</a>
-                                            </li>
-                                            <li>
-                                                <a href="/home">DC cables and connectors</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-02.html">AC cables and connectors</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Junction Boxes</a>
-                                            </li>
-                                            <li>
-                                                <a href="/home">Combiner Box</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-02.html">Surge protector or lightning arrestor</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Monitoring System</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Circuit breakers and Disconnect Swiches</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Grounding Equipment</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Tools for Installation</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Permitting and inspection fees</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Installation labor</a>
-                                            </li>
-                                        </ul>
+{/*                                         <ul className="sub-menu"> */}
+{/*                                             <li> */}
+{/*                                                 <a href="/home">Solar Panels</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-02.html">Mounting Structure</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Inverters</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="/home">DC cables and connectors</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-02.html">AC cables and connectors</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Junction Boxes</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="/home">Combiner Box</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-02.html">Surge protector or lightning arrestor</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Monitoring System</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Circuit breakers and Disconnect Swiches</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Grounding Equipment</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Tools for Installation</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Permitting and inspection fees</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Installation labor</a> */}
+{/*                                             </li> */}
+{/*                                         </ul> */}
                                     </li>
 
                                     <li>
                                         <a href="services.html">Services</a>
-                                        <ul className="sub-menu">
-                                            <li>
-                                                <a href="/home">Solar Power Plant Installations</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-02.html">Solar Water Heater Installations</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Solar Street Light Installations</a>
-                                            </li>
-                                            <li>
-                                                <a href="home-03.html">Solar CCTV Installations</a>
-                                            </li>
-                                        </ul>
+{/*                                         <ul className="sub-menu"> */}
+{/*                                             <li> */}
+{/*                                                 <a href="/home">Solar Power Plant Installations</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-02.html">Solar Water Heater Installations</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Solar Street Light Installations</a> */}
+{/*                                             </li> */}
+{/*                                             <li> */}
+{/*                                                 <a href="home-03.html">Solar CCTV Installations</a> */}
+{/*                                             </li> */}
+{/*                                         </ul> */}
                                     </li>
 
                                     <li className="active-menu">
@@ -356,7 +356,7 @@ const Contact = () => {
             {/* Title page */}
             <section
                 className="bg-img1 txt-center p-lr-15 p-tb-92"
-                style={{ backgroundImage: "url('images/bg-01.jpg')" }}
+                style={{ backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAlprgpt7ZPcqSDAy_Xn_CV0lVQTauFUlKCA1-JDKyTg&s')" }}
             >
                 <h2 className="ltext-105 cl0 txt-center">Contact</h2>
             </section>

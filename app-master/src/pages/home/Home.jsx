@@ -151,6 +151,107 @@ const updateFilter = (type, value) => {
 
     return (<>
 
+<style jsx global>{`
+        .isotope-grid {
+          row-gap: 32px;
+        }
+
+        .block2 {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          background: #fff;
+          border-radius: 16px;
+          border: 1px solid #eef0f4;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+          transition: 0.25s ease;
+        }
+
+        .block2:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+        }
+
+        .block2-pic {
+          position: relative;
+          padding-top: 75%;
+          overflow: hidden;
+          flex-shrink: 0;
+          background: #f6f7fb;
+        }
+
+        .block2-pic img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+
+        .block2:hover img {
+          transform: scale(1.06);
+        }
+
+        .block2-txt {
+          flex-grow: 1;
+          padding: 14px 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        .js-name-b2 {
+          font-size: 15px;
+          font-weight: 600;
+          color: #1f2937;
+        }
+
+        .stext-105 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #ff6b35;
+        }
+
+        .btn-addfavorite-b2 img {
+          width: 18px;
+          opacity: 0.7;
+          transition: 0.2s;
+        }
+
+        .btn-addfavorite-b2:hover img {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        .bg0 {
+          background: #f5f7fb;
+        }
+
+     /* Add gap between grid and page edges (corners) */
+              .bg0.p-t-23.p-b-140,
+              .bg0.p-t-75.p-b-120,
+              .section-product {
+                padding-left: 40px;
+                padding-right: 40px;
+              }
+
+    .section-product .container,
+    .bg0 .container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+@media (max-width: 768px) {
+  .section-product .container,
+  .bg0 .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+      `}</style>
+
+
         {/* Header */}
         <header>
             {/* Header desktop */}
@@ -206,31 +307,31 @@ const updateFilter = (type, value) => {
                                 </li>
                                 <li>
                                     <a href="/product">Products</a>
-                                    <ul className="sub-menu">
-                                        <li><a href="/home">Solar Panels</a></li>
-                                        <li><a href="home-02.html">Mounting Structure</a></li>
-                                        <li><a href="home-03.html">Inverters</a></li>
-                                        <li><a href="/home">DC cables and connectors</a></li>
-                                        <li><a href="home-02.html">AC cables and connectors</a></li>
-                                        <li><a href="home-03.html">Junction Boxes</a></li>
-                                        <li><a href="/home">Combiner Box</a></li>
-                                        <li><a href="home-02.html">Surge protector or lightning arrestor</a></li>
-                                        <li><a href="home-03.html">Monitoring System</a></li>
-                                        <li><a href="home-03.html">Circuit breakers and Disconnect Swiches</a></li>
-                                        <li><a href="home-03.html">Grounding Equipment</a></li>
-                                        <li><a href="home-03.html">Tools for Installation</a></li>
-                                        <li><a href="home-03.html">Permitting and inspection fees</a></li>
-                                        <li><a href="home-03.html">Installation labor</a></li>
-                                    </ul>
+{/*                                     <ul className="sub-menu"> */}
+{/*                                         <li><a href="/home">Solar Panels</a></li> */}
+{/*                                         <li><a href="home-02.html">Mounting Structure</a></li> */}
+{/*                                         <li><a href="home-03.html">Inverters</a></li> */}
+{/*                                         <li><a href="/home">DC cables and connectors</a></li> */}
+{/*                                         <li><a href="home-02.html">AC cables and connectors</a></li> */}
+{/*                                         <li><a href="home-03.html">Junction Boxes</a></li> */}
+{/*                                         <li><a href="/home">Combiner Box</a></li> */}
+{/*                                         <li><a href="home-02.html">Surge protector or lightning arrestor</a></li> */}
+{/*                                         <li><a href="home-03.html">Monitoring System</a></li> */}
+{/*                                         <li><a href="home-03.html">Circuit breakers and Disconnect Swiches</a></li> */}
+{/*                                         <li><a href="home-03.html">Grounding Equipment</a></li> */}
+{/*                                         <li><a href="home-03.html">Tools for Installation</a></li> */}
+{/*                                         <li><a href="home-03.html">Permitting and inspection fees</a></li> */}
+{/*                                         <li><a href="home-03.html">Installation labor</a></li> */}
+{/*                                     </ul> */}
                                 </li>
                                 <li>
                                     <a href="services.html">Services</a>
-                                    <ul className="sub-menu">
-                                        <li><a href="/home">Solar Power Plant Installations</a></li>
-                                        <li><a href="home-02.html">Solar Water Heater Installations</a></li>
-                                        <li><a href="home-03.html">Solar Street Light Installations</a></li>
-                                        <li><a href="home-03.html">Solar CCTV Installations</a></li>
-                                    </ul>
+{/*                                     <ul className="sub-menu"> */}
+{/*                                         <li><a href="/home">Solar Power Plant Installations</a></li> */}
+{/*                                         <li><a href="home-02.html">Solar Water Heater Installations</a></li> */}
+{/*                                         <li><a href="home-03.html">Solar Street Light Installations</a></li> */}
+{/*                                         <li><a href="home-03.html">Solar CCTV Installations</a></li> */}
+{/*                                     </ul> */}
                                 </li>
                                 {/* <li>
                                     <a href="product.html">Products</a>
@@ -488,7 +589,7 @@ const updateFilter = (type, value) => {
                   <div>
                     <div
                       className="item-slick1 parallax-slide"
-                      style={{ backgroundImage: "url(/images/solar-panel-02.jpg)" }}
+                      style={{ backgroundImage: "url(https://www.kezadgroup.com/-/media/sites/adports/news-and-media/a/abundance-solar-panel-industries-in-kezad.jpg?rev=0ba0211a0c224dd9920cb4d4278c135b&hash=D6DE3FFC9F37D5E97C07DA00CDC38013)" }}
                     >
                       <div className="container h-full">
                         <div className="flex-col-l-m h-full p-t-120 p-b-30">
@@ -506,7 +607,7 @@ const updateFilter = (type, value) => {
                   <div>
                     <div
                       className="item-slick1 parallax-slide"
-                      style={{ backgroundImage: "url(/images/solar-heater-02.jpg)" }}
+                      style={{ backgroundImage: "url(https://i.pinimg.com/736x/38/48/02/3848023ec526e6e93de1e0b77d9ce982.jpg)" }}
                     >
                       <div className="container h-full">
                         <div className="flex-col-l-m h-full p-t-120 p-b-30">

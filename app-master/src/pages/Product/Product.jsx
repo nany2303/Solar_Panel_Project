@@ -152,6 +152,120 @@ const Product = () => {
 
   return (
     <>
+
+    <style jsx global>{`
+      /* Light background only for sections that already use bg0 */
+      .bg0 {
+        background-color: #f5f7fb;
+      }
+
+      /* Product section: small padding so row is not touching edges */
+      .bg0.p-t-23.p-b-140,
+      .section-product {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      /* Keep default Bootstrap column gutters (no override here) */
+      .isotope-grid {
+        row-gap: 30px;
+      }
+
+      /* Card base */
+      .block2 {
+        border-radius: 14px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+        margin-bottom: 10px;
+      }
+
+      .block2:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Image area with fixed aspect ratio */
+      .block2-pic {
+        position: relative;
+        padding-top: 70%;
+        overflow: hidden;
+      }
+
+      .block2-pic img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.02);
+        transition: transform 0.4s ease;
+      }
+
+      .block2:hover .block2-pic img {
+        transform: scale(1.08);
+      }
+
+      /* Quick View button overlay */
+      .block2-btn {
+        position: absolute;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        opacity: 0;
+        pointer-events: none;
+        border-radius: 20px;
+        font-size: 13px;
+        background: rgba(0, 0, 0, 0.7) !important;
+        color: #fff !important;
+      }
+
+      .block2:hover .block2-btn {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Card bottom area */
+      .block2-txt {
+        padding: 14px 16px 16px;
+      }
+
+      /* Product title */
+      .block2-txt .js-name-b2 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #222 !important;
+        text-transform: none;
+      }
+
+      .block2-txt .js-name-b2:hover {
+        color: #ff6b35 !important;
+      }
+
+      /* Price */
+      .block2-txt .stext-105 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #ff6b35;
+        margin-top: 2px;
+      }
+
+      /* Favorite icon positioned cleanly */
+      .block2-txt-child2 {
+        align-items: flex-start;
+      }
+
+      .btn-addfavorite-b2 img {
+        width: 18px;
+        height: 18px;
+      }
+
+
+    `}</style>
+
+
       {/* Header */}
       <header>
         {/* Header desktop */}
