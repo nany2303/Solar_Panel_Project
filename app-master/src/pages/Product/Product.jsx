@@ -346,7 +346,7 @@ const Product = () => {
             </div>
           </div>
 
-          {/* Menu Mobile */}
+          {/* Menu Mobile Icon*/}
           <div className="menu-mobile">
             <ul className="topbar-mobile">
               <li>
