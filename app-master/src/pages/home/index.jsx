@@ -2,7 +2,139 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 
 const Index = () => {
-    const [mounted, setMounted] = useState(false);
+
+    const tags = ['solarpanel', 'solarwaterheater'];
+    const [products] = useState([
+        { id: 1, name: "Solar Panel", price: 16.64, category: "solarpanel", color: "blue", date: "2025-12-01", img: "solar-panel-01.jpg" },
+        { id: 2, name: "Solar Panel", price: 25.50, category: "solarpanel", color: "black", date: "2025-12-02", img: "solar-panel-02.jpg" },
+        { id: 3, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "grey", date: "2025-12-03", img: "solar-panel-03.jpg" },
+        { id: 4, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "green", date: "2025-12-04", img: "solar-panel-04.jpg" },
+        { id: 5, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "red", date: "2025-12-05", img: "solar-panel-05.jpg" },
+        { id: 6, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "white", date: "2025-12-06", img: "solar-panel-06.jpg" },
+        { id: 7, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "blue", date: "2025-12-07", img: "solar-panel-07.jpg" },
+        { id: 8, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "grey", date: "2025-12-08", img: "solar-panel-08.jpg" },
+        { id: 9, name: "Solar Water Heater", price: 34.75, category: "solarwaterheater", color: "blue", date: "2025-12-09", img: "solar-heater-01.jpg" },
+        { id: 10, name: "Solar Water Heater", price: 93.20, category: "solarwaterheater", color: "black", date: "2025-12-10", img: "solar-heater-02.jpg" },
+        { id: 11, name: "Solar Water Heater", price: 52.66, category: "solarwaterheater", color: "grey", date: "2025-12-11", img: "solar-heater-03.jpg" },
+        { id: 12, name: "Solar Water Heater", price: 18.96, category: "solarwaterheater", color: "green", date: "2025-12-12", img: "solar-heater-04.jpg" },
+        { id: 13, name: "Solar Water Heater", price: 75.00, category: "solarwaterheater", color: "red", date: "2025-12-13", img: "solar-heater-05.jpg" },
+        { id: 14, name: "Solar Water Heater", price: 60.00, category: "solarwaterheater", color: "white", date: "2025-12-14", img: "solar-heater-06.jpg" },
+        { id: 15, name: "Solar Water Heater", price: 55.00, category: "solarwaterheater", color: "blue", date: "2025-12-15", img: "solar-heater-07.jpg" },
+        { id: 16, name: "Solar Water Heater", price: 63.15, category: "solarwaterheater", color: "grey", date: "2025-12-16", img: "solar-heater-08.jpg" },
+        { id: 17, name: "Solar Street Light", price: 18.49, category: "streetlight", color: "blue", date: "2025-12-17", img: "street-light-01.jpg" },
+        { id: 18, name: "Circuit breakers & Disconnect Switches", price: 54.79, category: "streetlight", color: "black", date: "2025-12-18", img: "street-light-02.jpg" },
+        { id: 19, name: "Solar Street Light", price: 86.85, category: "streetlight", color: "grey", date: "2025-12-19", img: "street-light-03.jpg" },
+        { id: 20, name: "Tools for Installation", price: 86.85, category: "streetlight", color: "green", date: "2025-12-20", img: "street-light-04.jpg" },
+        { id: 21, name: "Tools for Installation", price: 86.85, category: "solarpanelstructure", color: "blue", date: "2025-12-21", img: "solar-structure-01.jpg" },
+        { id: 22, name: "Tools for Installation", price: 86.85, category: "solarpanelstructure", color: "black", date: "2025-12-22", img: "solar-structure-02.jpg" },
+        { id: 23, name: "Tools for Installation", price: 86.85, category: "solarpanelstructure", color: "grey", date: "2025-12-23", img: "solar-structure-03.jpg" },
+        { id: 24, name: "Tools for Installation", price: 86.85, category: "solarpanelstructure", color: "green", date: "2025-12-24", img: "solar-structure-04.jpg" },
+        { id: 25, name: "Tools for Installation", price: 36.85, category: "solarpanelstructure", color: "red", date: "2025-12-25", img: "solar-structure-05.jpg" },
+        { id: 26, name: "Solar Panel", price: 16.64, category: "solarpanel", color: "blue", date: "2025-12-01", img: "solar-panel-01.jpg" },
+        { id: 27, name: "Solar Panel", price: 25.50, category: "solarpanel", color: "black", date: "2025-12-02", img: "solar-panel-02.jpg" },
+        { id: 28, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "grey", date: "2025-12-03", img: "solar-panel-03.jpg" },
+        { id: 29, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "green", date: "2025-12-04", img: "solar-panel-04.jpg" },
+        { id: 30, name: "Solar Panel", price: 25.50, category: "solarpanel", color: "black", date: "2025-12-02", img: "solar-panel-02.jpg" },
+        { id: 31, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "grey", date: "2025-12-03", img: "solar-panel-03.jpg" },
+        { id: 32, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "green", date: "2025-12-04", popularity: 10, img: "solar-panel-04.jpg" },
+        { id: 33, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "green", date: "2025-12-04", popularity: 10, img: "solar-panel-04.jpg" },
+        { id: 34, name: "Solar Panel", price: 75.00, category: "solarpanel", color: "green", date: "2025-12-04", rating: 4.5, img: "solar-panel-04.jpg" },
+      ]);
+
+      const [filteredProducts, setFilteredProducts] = useState(products);
+      const [activeCategory, setActiveCategory] = useState("*");
+      const [filters, setFilters] = useState({
+        sort: "default",
+        price: "all",
+        color: "",
+        search: "",
+        tags: []
+      });
+      const [showFilter, setShowFilter] = useState(false);
+      const [showSearch, setShowSearch] = useState(false);
+
+    //    const updateFilter = (type, value) => {
+    //       setFilters((prev) => ({ ...prev, [type]: value }));
+    //    };
+
+    const updateFilter = (type, value) => {
+      setFilters((prev) => {
+        if (type === "tags") {
+          return {
+            ...prev,
+            tags: prev.tags.includes(value)
+              ? prev.tags.filter(tag => tag !== value)
+              : [...prev.tags, value]
+          };
+        }
+        return {
+          ...prev,
+          [type]: value
+        };
+      });
+    };
+
+      // ----- FILTER LOGIC -----
+      useEffect(() => {
+          let result = [...products];
+
+        if (filters.tags.length === 0 && activeCategory !== '*') {
+          result = result.filter(p => p.category === activeCategory);
+        }
+
+            // TAG FILTER
+            if (filters.tags.length > 0) {
+              result = result.filter(p =>
+                filters.tags.includes(p.category)
+              );
+            }
+
+            // PRICE FILTER
+            if (filters.price !== 'all') {
+              if (filters.price.includes('+')) {
+                const min = parseFloat(filters.price);
+                result = result.filter(p => p.price >= min);
+              } else {
+                const [min, max] = filters.price.split('-').map(Number);
+                result = result.filter(p => p.price >= min && p.price <= max);
+              }
+            }
+
+        if (filters.color) {
+          result = result.filter(p => p.color === filters.color);
+        }
+
+          // SORT
+          if (filters.sort !== 'default') {
+            if (filters.sort === 'price-low-high') {
+              result = [...result].sort((a, b) => a.price - b.price);
+            }
+
+            if (filters.sort === 'price-high-low') {
+              result = [...result].sort((a, b) => b.price - a.price);
+            }
+
+            if (filters.sort === 'newest') {
+              result = [...result].sort(
+                (a, b) => new Date(b.date) - new Date(a.date)
+              );
+            }
+          }
+
+            if (filters?.search?.length > 0) {
+              const searchText = filters.search.toLowerCase();
+
+              result = result.filter(p =>
+                p.name.toLowerCase().includes(searchText)
+              );
+            }
+
+
+
+            setFilteredProducts(result);
+      }, [filters, activeCategory])
+
+      const [mounted, setMounted] = useState(false);
 
       useEffect(() => {
         setMounted(true);
@@ -25,6 +157,106 @@ const Index = () => {
 
     return (
         <>
+        <style jsx global>{`
+                .isotope-grid {
+                  row-gap: 32px;
+                }
+
+                .block2 {
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  background: #fff;
+                  border-radius: 16px;
+                  border: 1px solid #eef0f4;
+                  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+                  transition: 0.25s ease;
+                }
+
+                .block2:hover {
+                  transform: translateY(-4px);
+                  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+                }
+
+                .block2-pic {
+                  position: relative;
+                  padding-top: 75%;
+                  overflow: hidden;
+                  flex-shrink: 0;
+                  background: #f6f7fb;
+                }
+
+                .block2-pic img {
+                  position: absolute;
+                  inset: 0;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.4s ease;
+                }
+
+                .block2:hover img {
+                  transform: scale(1.06);
+                }
+
+                .block2-txt {
+                  flex-grow: 1;
+                  padding: 14px 16px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                }
+
+                .js-name-b2 {
+                  font-size: 15px;
+                  font-weight: 600;
+                  color: #1f2937;
+                }
+
+                .stext-105 {
+                  font-size: 16px;
+                  font-weight: 700;
+                  color: #ff6b35;
+                }
+
+                .btn-addfavorite-b2 img {
+                  width: 18px;
+                  opacity: 0.7;
+                  transition: 0.2s;
+                }
+
+                .btn-addfavorite-b2:hover img {
+                  opacity: 1;
+                  transform: scale(1.1);
+                }
+
+                .bg0 {
+                  background: #f5f7fb;
+                }
+
+             /* Add gap between grid and page edges (corners) */
+                      .bg0.p-t-23.p-b-140,
+                      .bg0.p-t-75.p-b-120,
+                      .section-product {
+                        padding-left: 40px;
+                        padding-right: 40px;
+                      }
+
+            .section-product .container,
+            .bg0 .container {
+              padding-left: 40px;
+              padding-right: 40px;
+            }
+
+        @media (max-width: 768px) {
+          .section-product .container,
+          .bg0 .container {
+            padding-left: 18px;
+            padding-right: 18px;
+          }
+        }
+              `}</style>
+
             {/* Header */}
                     <header>
                         {/* Header desktop */}
@@ -80,31 +312,31 @@ const Index = () => {
                                             </li>
                                             <li>
                                                 <a href="/product">Products</a>
-                                                <ul className="sub-menu">
-                                                    <li><a href="/home">Solar Panels</a></li>
-                                                    <li><a href="home-02.html">Mounting Structure</a></li>
-                                                    <li><a href="home-03.html">Inverters</a></li>
-                                                    <li><a href="/home">DC cables and connectors</a></li>
-                                                    <li><a href="home-02.html">AC cables and connectors</a></li>
-                                                    <li><a href="home-03.html">Junction Boxes</a></li>
-                                                    <li><a href="/home">Combiner Box</a></li>
-                                                    <li><a href="home-02.html">Surge protector or lightning arrestor</a></li>
-                                                    <li><a href="home-03.html">Monitoring System</a></li>
-                                                    <li><a href="home-03.html">Circuit breakers and Disconnect Swiches</a></li>
-                                                    <li><a href="home-03.html">Grounding Equipment</a></li>
-                                                    <li><a href="home-03.html">Tools for Installation</a></li>
-                                                    <li><a href="home-03.html">Permitting and inspection fees</a></li>
-                                                    <li><a href="home-03.html">Installation labor</a></li>
-                                                </ul>
+{/*                                                 <ul className="sub-menu"> */}
+{/*                                                     <li><a href="/home">Solar Panels</a></li> */}
+{/*                                                     <li><a href="home-02.html">Mounting Structure</a></li> */}
+{/*                                                     <li><a href="home-03.html">Inverters</a></li> */}
+{/*                                                     <li><a href="/home">DC cables and connectors</a></li> */}
+{/*                                                     <li><a href="home-02.html">AC cables and connectors</a></li> */}
+{/*                                                     <li><a href="home-03.html">Junction Boxes</a></li> */}
+{/*                                                     <li><a href="/home">Combiner Box</a></li> */}
+{/*                                                     <li><a href="home-02.html">Surge protector or lightning arrestor</a></li> */}
+{/*                                                     <li><a href="home-03.html">Monitoring System</a></li> */}
+{/*                                                     <li><a href="home-03.html">Circuit breakers and Disconnect Swiches</a></li> */}
+{/*                                                     <li><a href="home-03.html">Grounding Equipment</a></li> */}
+{/*                                                     <li><a href="home-03.html">Tools for Installation</a></li> */}
+{/*                                                     <li><a href="home-03.html">Permitting and inspection fees</a></li> */}
+{/*                                                     <li><a href="home-03.html">Installation labor</a></li> */}
+{/*                                                 </ul> */}
                                             </li>
                                             <li>
                                                 <a href="services.html">Services</a>
-                                                <ul className="sub-menu">
-                                                    <li><a href="/home">Solar Power Plant Installations</a></li>
-                                                    <li><a href="home-02.html">Solar Water Heater Installations</a></li>
-                                                    <li><a href="home-03.html">Solar Street Light Installations</a></li>
-                                                    <li><a href="home-03.html">Solar CCTV Installations</a></li>
-                                                </ul>
+{/*                                                 <ul className="sub-menu"> */}
+{/*                                                     <li><a href="/home">Solar Power Plant Installations</a></li> */}
+{/*                                                     <li><a href="home-02.html">Solar Water Heater Installations</a></li> */}
+{/*                                                     <li><a href="home-03.html">Solar Street Light Installations</a></li> */}
+{/*                                                     <li><a href="home-03.html">Solar CCTV Installations</a></li> */}
+{/*                                                 </ul> */}
                                             </li>
                                             {/* <li>
                                                 <a href="product.html">Products</a>
@@ -128,7 +360,7 @@ const Index = () => {
                                         </ul>
                                     </div>
 
-                                    {/* Icon header */}
+                                    {/* Icon headers */}
                                     <div className="wrap-icon-header flex-w flex-r-m">
                                         <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                                             <i className="zmdi zmdi-search"></i>
@@ -431,7 +663,7 @@ const Index = () => {
                               <div>
                                 <div
                                   className="item-slick1 parallax-slide"
-                                  style={{ backgroundImage: "url(/images/solar-panel-02.jpg)" }}
+                                  style={{ backgroundImage: "url(https://www.kezadgroup.com/-/media/sites/adports/news-and-media/a/abundance-solar-panel-industries-in-kezad.jpg?rev=0ba0211a0c224dd9920cb4d4278c135b&hash=D6DE3FFC9F37D5E97C07DA00CDC38013)" }}
                                 >
                                   <div className="container h-full">
                                     <div className="flex-col-l-m h-full p-t-120 p-b-30">
@@ -449,7 +681,7 @@ const Index = () => {
                               <div>
                                 <div
                                   className="item-slick1 parallax-slide"
-                                  style={{ backgroundImage: "url(/images/solar-heater-02.jpg)" }}
+                                  style={{ backgroundImage: "url(https://i.pinimg.com/736x/38/48/02/3848023ec526e6e93de1e0b77d9ce982.jpg)" }}
                                 >
                                   <div className="container h-full">
                                     <div className="flex-col-l-m h-full p-t-120 p-b-30">
@@ -652,1264 +884,352 @@ const Index = () => {
                 </div>
             </section>
 
-            {/* Product */}
-            <section className="bg0 p-t-23 p-b-140">
-                <div className="container">
-                    <div className="p-b-10">
-                        <h3 className="ltext-103 cl5">Product Overview</h3>
-                    </div>
-
-                    <div className="flex-w flex-sb-m p-b-52">
-                        <div className="flex-w flex-l-m filter-tope-group m-tb-10">
-                            <button
-                                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
-                                data-filter="*"
-                            >
-                                All Products
-                            </button>
-
-                            <button
-                                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                                data-filter=".solarpanel"
-                            >
-                                Solar Panel
-                            </button>
-
-                            <button
-                                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                                data-filter=".solarwaterheater"
-                            >
-                                Solar Water Heater
-                            </button>
-
-                            <button
-                                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                                data-filter=".solarpanelstructure"
-                            >
-                                Solar Panel Structure
-                            </button>
-
-                            <button
-                                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                                data-filter=".streetlight"
-                            >
-                                Street Light
-                            </button>
-
-                            {/* <button
-                className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-                data-filter=".combinerbox"
-              >
-                Combiner Box
-              </button> */}
-                        </div>
-
-                        <div className="flex-w flex-c-m m-tb-10">
-                            <div
-                                className="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-                                <i className="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-                                <i className="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                                Filter
+             {/* Product */}
+                    <section className="bg0 p-t-23 p-b-140">
+                        <div className="container">
+                            <div className="p-b-10">
+                                <h3 className="ltext-103 cl5">
+                                    Product Overview
+                                </h3>
                             </div>
 
-                            <div
-                                className="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-                                <i className="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-                                <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                                Search
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Search product */}
-            <div className="dis-none panel-search w-full p-t-10 p-b-15">
-                <div className="bor8 dis-flex p-l-15">
-                    <button className="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-                        <i className="zmdi zmdi-search"></i>
-                    </button>
-
-                    <input className="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-                           placeholder="Search"/>
-                </div>
-            </div>
-
-            {/* Filter */}
-            <div className="dis-none panel-filter w-full p-t-10">
-                <div className="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-                    <div className="filter-col1 p-r-15 p-b-27">
-                        <div className="mtext-102 cl2 p-b-15">
-                            Sort By
-                        </div>
-
-                        <ul>
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    Default
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    Popularity
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    Average rating
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04 filter-link-active">
-                                    Newness
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    Price: Low to High
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    Price: High to Low
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div className="filter-col2 p-r-15 p-b-27">
-                        <div className="mtext-102 cl2 p-b-15">
-                            Price
-                        </div>
-
-                        <ul>
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04 filter-link-active">
-                                    All
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    $0.00 - $50.00
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    $50.00 - $100.00
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    $100.00 - $150.00
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    $150.00 - $200.00
-                                </a>
-                            </li>
-
-                            <li className="p-b-6">
-                                <a href="#" className="filter-link stext-106 trans-04">
-                                    $200.00+
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            {/* <div class="filter-col3 p-r-15 p-b-27">
-							<div class="mtext-102 cl2 p-b-15">
-								Color
-							</div>
-
-							<ul>
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Black
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Green
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										Red
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-									<a href="#" class="filter-link stext-106 trans-04">
-										White
-									</a>
-								</li>
-							</ul>
-						</div> */}
-
-            <div className="filter-col4 p-b-27">
-                <div className="mtext-102 cl2 p-b-15">
-                    Tags
-                </div>
-
-                <div className="flex-w p-t-4 m-r--5">
-                    <a href="#" className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Fashion
-                    </a>
-
-                    <a href="#" className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Lifestyle
-                    </a>
-
-                    <a href="#" className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Denim
-                    </a>
-
-                    <a href="#" className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Streetstyle
-                    </a>
-
-                    <a href="#" className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Crafts
-                    </a>
-                </div>
-            </div>
-
-            <div className="row isotope-grid">
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-01.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$16.64
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-02.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$25.50
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-03.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-04.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-05.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-06.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-07.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanel">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-panel-08.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Panel
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solar water heaters">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-01.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$34.75
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-02.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$93.20
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-03.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$52.66
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png"
-                                         alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-04.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$18.96
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-05.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$75.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-06.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$60.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-07.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$55.00
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarwaterheater">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-heater-08.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Water Heater
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$63.15
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item streetlight">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/street-light-01.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar street light
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$18.49
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item streetlight">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/street-light-02.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Circuit breakers&Disconnect Swiches
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$54.79
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item streetlight">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/street-light-03.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Solar Street Light
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item streetlight">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/street-light-04.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-01.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-02.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-03.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-04.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$86.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-05.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Tools for Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$36.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-06.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Installation
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$16.85
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item solarpanelstructure">
-                    {/* Block2 */}
-                    <div className="block2">
-                        <div className="block2-pic hov-img0">
-                            <img src="/images/solar-structure-07.jpg" alt="IMG-PRODUCT"/>
-
-                            <a href="#"
-                               className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
-
-                        <div className="block2-txt flex-w flex-t p-t-14">
-                            <div className="block2-txt-child1 flex-col-l ">
-                                <a href="/product-details"
-                                   className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Inverters
-                                </a>
-
-                                <span className="stext-105 cl3">
-									$29.64
-								</span>
-                            </div>
-
-                            <div className="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2">
-                                    <img className="icon-heart1 dis-block trans-04"
-                                         src="/images/icons/icon-heart-01.png" alt="ICON"/>
-                                    <img className="icon-heart2 dis-block trans-04 ab-t-l"
-                                         src="/images/icons/icon-heart-02.png" alt="ICON"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Load more */}
-                    <div className="flex-c-m flex-w w-full p-t-45">
-                        <a href="#" className="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-                            Load More
-                        </a>
-                    </div>
-                </div>
-            </div>
+                     {/* Category Filter Buttons */}
+                                            <div className="flex-w flex-sb-m p-b-52">
+                                              <div className="flex-w flex-l-m filter-tope-group m-tb-10">
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1 ${activeCategory === '*' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('*')}
+                                                >
+                                                  All Products
+                                                </button>
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${activeCategory === 'solarpanel' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('solarpanel')}
+                                                >
+                                                  Solar Panel
+                                                </button>
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${activeCategory === 'solarwaterheater' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('solarwaterheater')}
+                                                >
+                                                  Solar Water Heater
+                                                </button>
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${activeCategory === 'solarpanelstructure' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('solarpanelstructure')}
+                                                >
+                                                  Solar Panel Structure
+                                                </button>
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${activeCategory === 'streetlight' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('streetlight')}
+                                                >
+                                                  Street Light
+                                                </button>
+                                                <button
+                                                  className={`text-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${activeCategory === 'watches' ? 'how-active1' : ''}`}
+                                                  onClick={() => setActiveCategory('watches')}
+                                                >
+                                                  Watches
+                                                </button>
+                                              </div>
+
+
+
+                                              {/* Filter & Search Toggle Buttons */}
+                                                                          <div className="flex-w flex-c-m m-tb-10">
+                                                                            <div className="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter"
+                                                                              onClick={() => setShowFilter(!showFilter)}
+                                                                              style={{ cursor: 'pointer' }}
+                                                                            >
+                                                                              <i className={`icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list ${showFilter ? 'dis-none' : ''}`}></i>
+                                                                              <i className={`icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close ${showFilter ? '' : 'dis-none'}`}></i>
+                                                                              Filter
+                                                                            </div>
+                                                                            <div className="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search"
+                                                                              onClick={() => setShowSearch(!showSearch)}
+                                                                              style={{ cursor: 'pointer' }}
+                                                                            >
+                                                                              <i className={`icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search ${showSearch ? 'dis-none' : ''}`}></i>
+                                                                              <i className={`icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close ${showSearch ? '' : 'dis-none'}`}></i>
+                                                                              Search
+                                                                            </div>
+                                                                          </div>
+                                                                          </div>
+
+                                                                          {/* Search Panel */}
+                                                                          <div className={showSearch ? "panel-search w-full p-t-10 p-b-15 show-panel" : "panel-search w-full p-t-10 p-b-15 dis-none"}>
+                                                                                      <div className="bor8 dis-flex p-l-15">
+                                                                                        <button className="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                                                                                          <i className="zmdi zmdi-search"></i>
+                                                                                        </button>
+                                                                                        <input
+                                                                                          className="mtext-107 cl2 size-114 plh2 p-r-15"
+                                                                                          type="text"
+                                                                                          name="search-product"
+                                                                                          placeholder="Search..."
+                                                                                          value={filters.search}
+                                                                                          onChange={(e) => updateFilter("search", e.target.value)}
+                                                                                        />
+                                                                                      </div>
+                                                                          </div>
+
+                                                                          {/* Filter Panel - Your exact JSX */}
+                                                                          <div className={showFilter ? "panel-filter w-full p-t-10 show-panel" : "panel-filter w-full p-t-10 dis-none"}>
+                                                                                      <div className="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                                                                                        {/* Sort */}
+                                                                                        <div className="filter-col1 p-r-15 p-b-27">
+                                                                                          <div className="mtext-102 cl2 p-b-15">Sort By</div>
+                                                                                          <ul>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "default" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "default"); }}
+                                                                                              >
+                                                                                                Default
+                                                                                              </a>
+                                                                                            </li>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "popularity" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "popularity"); }}
+                                                                                              >
+                                                                                                Popularity
+                                                                                              </a>
+                                                                                            </li>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "rating" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "rating"); }}
+                                                                                              >
+                                                                                                Average rating
+                                                                                              </a>
+                                                                                            </li>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "newest" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "newest"); }}
+                                                                                              >
+                                                                                                Newness
+                                                                                              </a>
+                                                                                            </li>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "price-low-high" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "price-low-high"); }}
+                                                                                              >
+                                                                                                Price: Low to High
+                                                                                              </a>
+                                                                                            </li>
+                                                                                            <li className="p-b-6">
+                                                                                              <a
+                                                                                                href="#"
+                                                                                                className={`filter-link stext-106 trans-04 ${filters.sort === "price-high-low" ? "filter-link-active" : ""}`}
+                                                                                                onClick={(e) => { e.preventDefault(); updateFilter("sort", "price-high-low"); }}
+                                                                                              >
+                                                                                                Price: High to Low
+                                                                                              </a>
+                                                                                            </li>
+                                                                                          </ul>
+                                                                                        </div>
+
+                                                                              {/* Price - Complete */}
+                                                                              <div className="filter-col2 p-r-15 p-b-27">
+                                                                                <div className="mtext-102 cl2 p-b-15">Price</div>
+                                                                                <ul>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === 'all' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', 'all');}}>
+                                                                                      All
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === '0.00-50.00' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', '0.00-50.00');}}>
+                                                                                      $0.00 - $50.00
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === '50.00-100.00' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', '50.00-100.00');}}>
+                                                                                      $50.00 - $100.00
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === '100.00-150.00' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', '100.00-150.00');}}>
+                                                                                      $100.00 - $150.00
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === '150.00-200.00' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', '150.00-200.00');}}>
+                                                                                      $150.00 - $200.00
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.price === '200.00+' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('price', '200.00+');}}>
+                                                                                      $200.00+
+                                                                                    </a>
+                                                                                  </li>
+                                                                                </ul>
+                                                                              </div>
+
+                                                                              {/* Color */}
+                                                                              <div className="filter-col3 p-r-15 p-b-27">
+                                                                                <div className="mtext-102 cl2 p-b-15">Color</div>
+                                                                                <ul>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#222"}}>
+                                                                                      <i className="zmdi zmdi-circle"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.color === 'black' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'black');}}>
+                                                                                      Black
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#4272d7"}}>
+                                                                                      <i className="zmdi zmdi-circle"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 filter-link-active ${filters.color === 'blue' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'blue');}}>
+                                                                                      Blue
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#b3b3b3"}}>
+                                                                                      <i className="zmdi zmdi-circle"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.color === 'grey' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'grey');}}>
+                                                                                      Grey
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#00ad5f"}}>
+                                                                                      <i className="zmdi zmdi-circle"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.color === 'green' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'green');}}>
+                                                                                      Green
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#fa4251"}}>
+                                                                                      <i className="zmdi zmdi-circle"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.color === 'red' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'red');}}>
+                                                                                      Red
+                                                                                    </a>
+                                                                                  </li>
+                                                                                  <li className="p-b-6">
+                                                                                    <span className="fs-15 lh-12 m-r-6" style={{color: "#aaa"}}>
+                                                                                      <i className="zmdi zmdi-circle-o"></i>
+                                                                                    </span>
+                                                                                    <a href="#" className={`filter-link stext-106 trans-04 ${filters.color === 'white' ? 'filter-link-active' : ''}`}
+                                                                                      onClick={(e) => {e.preventDefault(); updateFilter('color', 'white');}}>
+                                                                                      White
+                                                                                    </a>
+                                                                                  </li>
+                                                                                </ul>
+                                                                                </div>
+                                                                                </div>
+                                                                              </div>
+                                                                              </div>
+
+
+                                                                              {/* Tags */}
+                                                                             <div className="filter-col4 p-b-27">
+                                                                               <div className="mtext-102 cl2 p-b-15">Tags</div>
+                                                                               <div className="flex-w p-t-4">
+                                                                                 {tags.map((tag, idx) => {
+                                                                                    return (
+                                                                                   <div
+                                                                                     key={tag}
+                                                                                     className={`flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5 pointer ${
+                                                                                       filters.tags.includes(tag) ? 'hov-tag1-active' : ''
+                                                                                     }`}
+                                                                                     onClick={() => updateFilter('tags', tag)}
+                                                                                   >
+                                                                                     {tag}
+                                                                                   </div>
+                                                                                   )
+                                                                                 })}
+                                                                               </div>
+                                                                             </div>
+
+
+                                                     {/* Product grid */}
+                                                         <div className="row isotope-grid">
+                                                           {filteredProducts.map((p) => (
+                                                             <div
+                                                               key={p.id}
+                                                               className={`col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${p.category}`}
+                                                             >
+                                                               <div className="block2">
+                                                                 <div className="block2-pic hov-img0">
+                                                                   <img src={`/images/${p.img}`} alt="IMG-PRODUCT" />
+                                                                   <a
+                                                                     href="#"
+                                                                     className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+                                                                   >
+                                                                     Quick View
+                                                                   </a>
+                                                                 </div>
+                                                                 <div className="block2-txt flex-w flex-t p-t-14">
+                                                                   <div className="block2-txt-child1 flex-col-l ">
+                                                                     <a
+                                                                       href="/product-details"
+                                                                       className="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6"
+                                                                     >
+                                                                       {p.name}
+                                                                     </a>
+                                                                     <span className="stext-105 cl3">
+                                                                       ${p.price.toFixed(2)}
+                                                                     </span>
+                                                                   </div>
+                                                                   <div className="block2-txt-child2 flex-r p-t-3">
+                                                                     <a
+                                                                       href="#"
+                                                                       className="btn-addfavorite-b2 dis-block pos-relative js-addfavorite-b2"
+                                                                     >
+                                                                       <img
+                                                                         className="icon-heart1 dis-block trans-04"
+                                                                         src="/images/icons/icon-heart-01.png"
+                                                                         alt="ICON"
+                                                                       />
+                                                                       <img
+                                                                         className="icon-heart2 dis-block trans-04 ab-t-l"
+                                                                         src="/images/icons/icon-heart-02.png"
+                                                                         alt="ICON"
+                                                                       />
+                                                                     </a>
+                                                                   </div>
+                                                                 </div>
+                                                               </div>
+                                                             </div>
+                                                           ))}
+                                                         </div>
+
+                                                          {/* Load more */}
+                                                             <div className="flex-c-m flex-w w-full p-t-45">
+                                                               <a
+                                                                 href="#"
+                                                                 className="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
+                                                               >
+                                                                 Load More
+                                                               </a>
+                                                             </div>
+                                                         </section>
 
             {/* Footer */}
             <footer className="bg3 p-t-75 p-b-32">
