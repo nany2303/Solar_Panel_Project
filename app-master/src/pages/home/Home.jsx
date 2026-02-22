@@ -249,6 +249,31 @@ const updateFilter = (type, value) => {
     padding-right: 18px;
   }
 }
+
+    .sec-banner .wrap-pic-w.equal-height {
+      height: 480px !important;
+      overflow: hidden !important;
+    }
+
+    .sec-banner .img-equal {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    @media (max-width: 991px) {
+      .sec-banner .wrap-pic-w.equal-height {
+        height: 280px !important;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .sec-banner .wrap-pic-w.equal-height {
+        height: 240px !important;
+      }
+    }
+
       `}</style>
 
 
@@ -650,79 +675,67 @@ const updateFilter = (type, value) => {
                 <div className="row">
                     <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
                         {/* Block1 */}
-                        <div className="block1 wrap-pic-w">
-                            <img src="/images/solar-panel-05.jpg" alt="IMG-BANNER" />
-
-                                <a href="/product"
-                                   className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                                    <div className="block1-txt-child1 flex-col-l">
-								<span className="block1-name ltext-102 trans-04 p-b-8">
-									Solar Panel
-								</span>
-
-                                        <span className="block1-info stext-102 trans-04">
-									Spring 2024
-								</span>
+                        <div className="block1 wrap-pic-w equal-height">
+                            <img src="/images/solar-panel-10.jpg" alt="Solar Panel Lighting System" className="img-equal" />
+                            <a href="/product" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                <div className="block1-txt-child1 flex-col-l">
+                                    <span className="block1-name ltext-102 trans-04 p-b-8">
+                                        Solar Panel Lighting System
+                                    </span>
+                                    <span className="block1-info stext-102 trans-04">
+                                        Spring 2024
+                                    </span>
+                                </div>
+                                <div className="block1-txt-child2 p-b-4 trans-05">
+                                    <div className="block1-link stext-101 cl0 trans-09">
+                                        Shop Now
                                     </div>
-
-                                    <div className="block1-txt-child2 p-b-4 trans-05">
-                                        <div className="block1-link stext-101 cl0 trans-09">
-                                            Shop Now
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
                         {/* Block1 */}
-                        <div className="block1 wrap-pic-w">
-                            <img src="/images/solar-heater-02.jpg" alt="IMG-BANNER" />
-
-                                <a href="/product"
-                                   className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                                    <div className="block1-txt-child1 flex-col-l">
-								<span className="block1-name ltext-102 trans-04 p-b-8">
-									Solar Weater Heater
-								</span>
-
-                                        <span className="block1-info stext-102 trans-04">
-									Spring 2024
-								</span>
+                        <div className="block1 wrap-pic-w equal-height">
+                            <img src="/images/solar-heater-02.jpg" alt="Solar Water Heater" className="img-equal" />
+                            <a href="/product" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                <div className="block1-txt-child1 flex-col-l">
+                                    <span className="block1-name ltext-102 trans-04 p-b-8">
+                                        Solar Water Heater
+                                    </span>
+                                    <span className="block1-info stext-102 trans-04">
+                                        Spring 2024
+                                    </span>
+                                </div>
+                                <div className="block1-txt-child2 p-b-4 trans-05">
+                                    <div className="block1-link stext-101 cl0 trans-09">
+                                        Shop Now
                                     </div>
-
-                                    <div className="block1-txt-child2 p-b-4 trans-05">
-                                        <div className="block1-link stext-101 cl0 trans-09">
-                                            Shop Now
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
                     <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
                         {/* Block1 */}
-                        <div className="block1 wrap-pic-w">
-                            <img src="/images/solar-structure-01.jpg" alt="IMG-BANNER" />
-
-                                <a href="/product"
-                                   className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                                    <div className="block1-txt-child1 flex-col-l">
-								<span className="block1-name ltext-102 trans-04 p-b-8">
-									Solar Panel Structure
-								</span>
-
-                                        <span className="block1-info stext-102 trans-04">
-									New Trend
-								</span>
+                        <div className="block1 wrap-pic-w equal-height">
+                            <img src="/images/solar-structure-01.jpg" alt="Solar Panel Structure" className="img-equal" />
+                            <a href="/product" className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                                <div className="block1-txt-child1 flex-col-l">
+                                    <span className="block1-name ltext-102 trans-04 p-b-8">
+                                        Solar Panel Structure
+                                    </span>
+                                    <span className="block1-info stext-102 trans-04">
+                                        New Trend
+                                    </span>
+                                </div>
+                                <div className="block1-txt-child2 p-b-4 trans-05">
+                                    <div className="block1-link stext-101 cl0 trans-09">
+                                        Shop Now
                                     </div>
-
-                                    <div className="block1-txt-child2 p-b-4 trans-05">
-                                        <div className="block1-link stext-101 cl0 trans-09">
-                                            Shop Now
-                                        </div>
-                                    </div>
-                                </a>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

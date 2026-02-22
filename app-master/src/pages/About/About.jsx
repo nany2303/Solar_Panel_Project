@@ -101,7 +101,7 @@ const About = () => {
                             <div className="limiter-menu-desktop container">
                                 {/* Logo desktop */}
                                 <a href="#" className="logo">
-                                    <img src="/images/icons/img-logo.png" alt="IMG-LOGO" />
+                                    <img src="/images/icons/Images23.jpg" alt="IMG-LOGO" />
                                 </a>
 
                                 {/* Menu desktop */}

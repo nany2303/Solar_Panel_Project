@@ -217,15 +217,14 @@ const SolarPanel1 = () => {
                   {/* Service Card */}
                   <div className="service-card">
                     <img src="/images/solar-panel-04.jpg" alt="" />
-                    <h4>Solar Power Plant Installation</h4>
+                    <h4>Solar Connectivity Solutions</h4>
                     <p>
-                      Rooftop and ground-mounted solar systems for homes, apartments,
-                      industries, and commercial buildings.
+                      Durable and UV-protected wiring solutions that ensure long-lasting power transmission for your solar infrastructure.
                     </p>
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/solar-heater-02.jpg" alt="" />
+                    <img src="/images/solar-panel-09.jpg" alt="" />
                     <h4>Solar Water Heater Installation</h4>
                     <p>
                       Hot water systems for homes, hospitals, hostels, and industrial
@@ -234,7 +233,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/street-light-03.jpg" alt="" />
+                    <img src="/images/solar-panel-10.jpg" alt="" />
                     <h4>Solar Street Light Installation</h4>
                     <p>
                       Independent and centralized solar lighting for layouts,
@@ -243,7 +242,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/solar-panel-08.jpg" alt="" />
+                    <img src="/images/solar-panel-11.jpg" alt="" />
                     <h4>AMC & Remote Monitoring</h4>
                     <p>
                       Preventive maintenance, cleaning, system health checks, and
@@ -252,7 +251,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/solar-panel-01.jpg" alt="" />
+                    <img src="/images/solar-panel-12.jpg" alt="" />
                     <h4>Solar CCTV Installation</h4>
                     <p>
                       Off-grid and hybrid CCTV surveillance systems for remote and
@@ -261,7 +260,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/solar-structure-03.jpg" alt="" />
+                    <img src="/images/solar-panel-13.jpg" alt="" />
                     <h4>System Design & Consulting</h4>
                     <p>
                       Site survey, shadow analysis, feasibility study, and customized
@@ -270,7 +269,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                    <img src="/images/solar-structure-01.jpg" alt="" />
+                    <img src="/images/solar-panel-14.jpg" alt="" />
                     <h4>Subsidy & Approval Support</h4>
                     <p>
                       DISCOM approvals, net-metering assistance, and government subsidy
@@ -279,7 +278,7 @@ const SolarPanel1 = () => {
                   </div>
 
                   <div className="service-card">
-                                      <img src="/images/solar-panel-04.jpg" alt="" />
+                                      <img src="/images/solar-panel-15.jpg" alt="" />
                                       <h4>Solar Power Plant Installation</h4>
                                       <p>
                                         Rooftop and ground-mounted solar systems for homes, apartments,
@@ -288,7 +287,7 @@ const SolarPanel1 = () => {
                                     </div>
 
                                     <div className="service-card">
-                                      <img src="/images/solar-heater-02.jpg" alt="" />
+                                      <img src="/images/solar-panel-16.jpg" alt="" />
                                       <h4>Solar Water Heater Installation</h4>
                                       <p>
                                         Hot water systems for homes, hospitals, hostels, and industrial
@@ -297,7 +296,7 @@ const SolarPanel1 = () => {
                                     </div>
 
                                     <div className="service-card">
-                                      <img src="/images/street-light-03.jpg" alt="" />
+                                      <img src="/images/solar-panel-18.jpg" alt="" />
                                       <h4>Solar Street Light Installation</h4>
                                       <p>
                                         Independent and centralized solar lighting for layouts,
